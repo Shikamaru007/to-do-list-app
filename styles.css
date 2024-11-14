@@ -1,15 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 :root{
     --main-background-colour: hsl(51, 100%, 81%);
     --body-background-color:hsl(30, 100%, 79%);
     --text-color: hsl(50, 21%, 11%);
     --gret-accent: hsl(50, 21%, 11%, .5);
 }
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Space Mono", monospace;
+    font-family: "Space Mono", serif;
     color: var(--text-color);
 }
 html{
@@ -24,7 +24,7 @@ body{
 .container{
     width: 90%;
     background-color: var(--body-background-color);
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
     margin: 0 auto;
     height: max-content;
     border: 1px solid black;
@@ -32,19 +32,106 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 h1{
     font-weight: 300;
+    font-family: "Space Mono", serif;
+    line-height: 1;
 }
 .row{
-    border: 1px solid red;
+    border-radius: 20px;
     width: 100%;
-    padding: .5rem 1rem;
     display: flex;
     justify-content: space-between;
     background-color: var(--main-background-colour);
 }
 .taskInput{
     font-family: inherit;
-    font-size: 1rem;
+    font-size: .75rem;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: .8rem .95rem;
+}
+.btn{
+    border: none;
+    outline: none;
+    font-family: inherit;
+    padding: .5rem 1.5rem;
+    color: var(--main-background-colour);
+    background-color: var(--text-color);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: hsl(51, 8%, 34%);
+}
+.to-do-list-container{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.to-do-list-container li{
+    padding: .5rem .5rem .5rem 2.5rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+}
+.to-do-list-container li.checked span{
+    position: relative;
+    opacity: .7;
+}
+.to-do-list-container li.checked span::after{
+    content: "";   
+    width: 105%;
+    height: 2px;
+    background-color: hsl(50, 21%, 11%);
+    position: absolute;
+    left: -.2rem;
+    right: 0;
+    bottom: 50%;
+    transform: translateY(120%); 
+}
+    
+.removeIcon{
+    display: flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+.removeIcon:hover{
+    background-color: var(--main-background-colour);
+}
+.removeIcon img{
+    width: 45%;
+}
+.to-do-list-container li::before{
+    position: absolute;
+    content: url(images/unchecked.svg);
+    width: 1.65rem;
+    height: 1.65rem;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.to-do-list-container li.checked::before{
+    content: url(images/checked.svg);
+
+
 }
