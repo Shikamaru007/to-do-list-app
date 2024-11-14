@@ -23,23 +23,22 @@ function updateDisplay(){
         const taskList = document.createElement("li");
         taskList.innerHTML = `<span>${taskName}</span> <button  class = "removeIcon" onclick ="deleteTask(${index})"><img src="images/remove.svg" alt="remove icon"></button>`;
 
+        if(task.completed){
+            taskList.classList.add("checked")
+            saveData()
+        }
+        taskList.addEventListener("click", () => {
+            task.completed = !task.completed;
+            taskList.classList.toggle("checked")
+            saveData()
+        })
+
 
         taskContainer.appendChild(taskList);
         
     })
 
 }
-
-taskContainer.addEventListener("click", (event) => {
-    if(event.target.tagName === "SPAN"){
-        event.target.parentElement.classList.toggle("checked");
-        saveData()
-    }
-    else if(event.target.tagName === "LI"){
-        event.target.classList.toggle("checked");
-        saveData()
-    }
-})
 
 function deleteTask(index){
     tasks.splice(index, 1);
@@ -48,11 +47,15 @@ function deleteTask(index){
 }
 
 function saveData(){
-    localStorage.setItem('data', taskContainer.innerHTML);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function showData(){
-    taskContainer.innerHTML = localStorage.getItem('data');
+    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if(savedTasks){
+        tasks = savedTasks;
+        updateDisplay();
+    }
 }
 
 document.addEventListener("keydown", event => {
@@ -61,6 +64,5 @@ document.addEventListener("keydown", event => {
     }
 })
 
-updateDisplay()
 showData();
 
