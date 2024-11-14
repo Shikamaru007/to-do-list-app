@@ -1,0 +1,50 @@
+:root{
+    --main-background-colour: hsl(51, 100%, 81%);
+    --body-background-color:hsl(30, 100%, 79%);
+    --text-color: hsl(50, 21%, 11%);
+    --gret-accent: hsl(50, 21%, 11%, .5);
+}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Space Mono", monospace;
+    color: var(--text-color);
+}
+html{
+    font-size: 18px;
+}
+body{
+    display: flex;
+    padding: 3rem 0;
+    background-color: var(--main-background-colour);
+    min-height: 100vh;
+}
+.container{
+    width: 90%;
+    background-color: var(--body-background-color);
+    padding: 3rem 1rem;
+    margin: 0 auto;
+    height: max-content;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    font-weight: 300;
+}
+.row{
+    border: 1px solid red;
+    width: 100%;
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--main-background-colour);
+}
+.taskInput{
+    font-family: inherit;
+    font-size: 1rem;
+}
